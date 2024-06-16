@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title')
+    My Dashboard
+@endsection
 
 @section('content')
     <div class="container">
-        <h1 class="text-center py-4">My DcComics Dashboard</h1>
-
+        <h1 class="text-center py-4 fw-bold">My DcComics Dashboard</h1>
         <table class="table">
             <thead>
                 <tr>
