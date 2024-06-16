@@ -9,7 +9,8 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav gap-3">
                     <a class="nav-link active" aria-current="page" href="{{ route('admin.index') }}">Lista Comics</a>
-                    <a class="nav-link active" aria-current="page" href="#">Aggiungi nuovo</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.create') }}">Aggiungi
+                        nuovo</a>
                     <a class="nav-link active text-secondary" aria-current="page" aria-disabled="true">Cancella</a>
                 </div>
                 <div class="navbar-nav ms-auto">
