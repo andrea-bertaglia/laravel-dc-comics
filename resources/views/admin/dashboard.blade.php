@@ -4,6 +4,10 @@
     My Dashboard
 @endsection
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <div class="container">
         <h1 class="text-center py-4 fw-bold">My DcComics Dashboard</h1>
@@ -26,7 +30,7 @@
                         <td>{{ $comic['title'] }}</td>
                         <td>{{ $comic['price'] }}</td>
                         <td>{{ $comic['series'] }}</td>
-                        <td>{{ $comic['sale_date'] }}</td>
+                        <td>{{ Carbon::parse($comic['sale_date'])->format('d-m-Y') }}</td>
                         <td>{{ $comic['type'] }}</td>
                         <td>
                             <a href="{{ route('admin.show', ['admin' => $comic->id]) }}" class="btn btn-primary me-2"

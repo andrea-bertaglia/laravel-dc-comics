@@ -4,6 +4,10 @@
     Home Page
 @endsection
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <div class="container">
         <h1 class="text-center py-4 fw-bold">Lista DC Comics</h1>
@@ -23,7 +27,7 @@
                             </li>
                             <li class="list-group-item">
                                 <span class="fw-bold">Data di uscita: </span>
-                                <span>{{ $comic->sale_date }}</span>
+                                <span>{{ Carbon::parse($comic['sale_date'])->format('d-m-Y') }}</span>
                             </li>
                             <li class="list-group-item">
                                 <span class="fw-bold">Tipo: </span>

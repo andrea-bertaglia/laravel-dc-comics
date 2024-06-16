@@ -9,7 +9,7 @@
         <div class="row d-flex justify-content-center">
             <h3 class="py-3 text-center">Aggiungi un nuovo fumetto</h3>
             <div class="col-6">
-                <form method="POST" action="{{ route('admin.index') }}">
+                <form method="POST" action="{{ route('admin.store') }}">
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
                         <input type="text" class="form-control" id="title" aria-describedby="title" name="title">
@@ -29,14 +29,13 @@
                             name="sale_date">
                     </div>
                     <div class="input-group mb-3">
-                        <select class="form-select" id="type">
+                        <select class="form-select" id="type" name="type">
                             <option selected>Scegli...</option>
                             <option value="1">comic book</option>
                             <option value="2">graphic novel</option>
                         </select>
                         <label class="input-group-text" for="type">Opzioni</label>
                     </div>
-
                     <div class="mb-3">
                         <label for="price" class="form-label">Prezzo</label>
                         <input type="text" class="form-control" id="price" aria-describedby="price" name="price"
@@ -47,7 +46,7 @@
                         <textarea type="text" class="form-control" id="description" aria-describedby="description" name="description">
                         </textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Salva</button>
                 </form>
             </div>
         </div>
