@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
 class ComicController extends Controller
 {
@@ -30,7 +31,11 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newComic = new Comic();
+        $newComic->fill($data);
+        $newComic->save();
+        return redirect()->route('admin.index');
     }
 
     /**

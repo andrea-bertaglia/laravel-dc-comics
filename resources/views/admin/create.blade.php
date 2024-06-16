@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Aggiungi nuovo
+    Aggiungi un nuovo fumetto
 @endsection
 
 @section('content')
@@ -10,6 +10,9 @@
             <h3 class="py-3 text-center">Aggiungi un nuovo fumetto</h3>
             <div class="col-6">
                 <form method="POST" action="{{ route('admin.store') }}">
+                    {{-- csrf token di sicurezza --}}
+                    @csrf
+
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
                         <input type="text" class="form-control" id="title" aria-describedby="title" name="title">
@@ -31,8 +34,8 @@
                     <div class="input-group mb-3">
                         <select class="form-select" id="type" name="type">
                             <option selected>Scegli...</option>
-                            <option value="1">comic book</option>
-                            <option value="2">graphic novel</option>
+                            <option value="comic book">comic book</option>
+                            <option value="graphic novel">graphic novel</option>
                         </select>
                         <label class="input-group-text" for="type">Opzioni</label>
                     </div>
@@ -46,7 +49,7 @@
                         <textarea type="text" class="form-control" id="description" aria-describedby="description" name="description">
                         </textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Salva</button>
+                    <button type="submit" class="btn btn-success">Salva</button>
                 </form>
             </div>
         </div>
