@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center py-3">My DcComics Dashboard</h1>
+        <h1 class="text-center py-4">My DcComics Dashboard</h1>
 
         <table class="table">
             <thead>
