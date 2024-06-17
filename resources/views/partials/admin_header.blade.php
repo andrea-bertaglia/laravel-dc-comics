@@ -15,7 +15,7 @@
                 </div>
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active btn btn-secondary text-white" aria-current="page"
-                        href="{{ route('comics.index') }}">Home Page</a>
+                        href="{{ route('index') }}">Home Page</a>
                 </div>
             </div>
         </div>

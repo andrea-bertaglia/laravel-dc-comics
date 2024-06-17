@@ -7,7 +7,7 @@
 @php
     use Carbon\Carbon;
 @endphp
-{{-- 
+
 @section('content')
     <div class="container">
         <h1 class="text-center py-4 fw-bold">Lista DC Comics</h1>
@@ -43,4 +43,4 @@
             @endforeach
         </div>
     </div>
-@endsection --}}
+@endsection
