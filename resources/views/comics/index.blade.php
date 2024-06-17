@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title')
-    Home Page
+    My Dashboard
 @endsection
 
 @php
@@ -10,37 +10,40 @@
 
 @section('content')
     <div class="container">
-        <h1 class="text-center py-4 fw-bold">Lista DC Comics</h1>
-        <div class="row g-4">
-            @foreach ($comics as $comic)
-                <div class="col-4">
-                    <div class="card h-100 w-100" style="width: 18rem;">
-                        <img src="{{ $comic->thumb }}" class="card-img-top" alt="Copertina di {{ $comic->title }}">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold py-2">{{ $comic->title }}</h5>
-                            <p class="card-text">{{ $comic->description }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <span class="fw-bold">Serie: </span>
-                                <span>{{ $comic->series }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <span class="fw-bold">Data di uscita: </span>
-                                <span>{{ Carbon::parse($comic['sale_date'])->format('d-m-Y') }}</span>
-                            </li>
-                            <li class="list-group-item">
-                                <span class="fw-bold">Tipo: </span>
-                                <span>{{ $comic->type }}</span>
-                            </li>
-                        </ul>
-                        <div class="card-body">
-                            <span class="fw-bold">Prezzo: </span>
-                            <span>{{ $comic->price }} $</span>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
+        <h1 class="text-center py-4 fw-bold">My DcComics Dashboard</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Titolo</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Serie</th>
+                    <th scope="col">Data di uscita</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Azioni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($comics as $comic)
+                    <tr>
+                        <th scope="row">{{ $comic['id'] }}</th>
+                        <td>{{ $comic['title'] }}</td>
+                        <td>{{ $comic['price'] }}</td>
+                        <td>{{ $comic['series'] }}</td>
+                        <td>{{ Carbon::parse($comic['sale_date'])->format('d-m-Y') }}</td>
+                        <td>{{ $comic['type'] }}</td>
+                        <td>
+                            <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary me-2"
+                                class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i>
+                            </a>
+                            <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}" class="btn btn-success me-2"><i
+                                    class="fas fa-pencil"></i></a>
+                            <a href="" class="btn btn-danger me-2" disabled><i class="fas fa-trash"></i></a>
+
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 @endsection

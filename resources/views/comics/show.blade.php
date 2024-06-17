@@ -9,42 +9,42 @@
         <div class="d-flex justify-content-end pt-4 pb-2 gap-3">
 
             {{-- Bottone 'successivo' --}}
-            @if ($comicArray->id > 1)
-                <a class="btn btn-success" href="{{ route('admin.show', ['admin' => $comicArray->id - 1]) }}"><i
+            @if ($comics->id > 1)
+                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id - 1]) }}"><i
                         class="fa-solid fa-circle-arrow-left"></i> Precedente</a>
             @endif
             {{-- /Bottone 'successivo' --}}
 
             {{-- Bottone 'precedente' --}}
-            @if ($comicArray->id < $comicArray->count())
-                <a class="btn btn-success" href="{{ route('admin.show', ['admin' => $comicArray->id + 1]) }}">Successivo <i
+            @if ($comics->id < $comics->count())
+                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id + 1]) }}">Successivo <i
                         class="fa-solid fa-circle-arrow-right"></i></a>
             @endif
             {{-- Bottone 'successivo' --}}
 
         </div>
-        <h1 class="text-center border-bottom border-tertiary py-2 mt-3">{{ $comicArray->title }}</h1>
+        <h1 class="text-center border-bottom border-tertiary py-2 mt-3">{{ $comics->title }}</h1>
         <div class="row py-4">
             <div class="col-4">
-                <img class="img-fluid w-100" src="{{ $comicArray->thumb }}" alt="">
+                <img class="img-fluid w-100" src="{{ $comics->thumb }}" alt="">
             </div>
             <div class="col-8">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <span class="fw-bold">Serie: </span>
-                        <span>{{ $comicArray->series }}</span>
+                        <span>{{ $comics->series }}</span>
                     </li>
                     <li class="list-group-item">
                         <span class="fw-bold">Data di uscita: </span>
-                        <span>{{ $comicArray->sale_date }}</span>
+                        <span>{{ $comics->sale_date }}</span>
                     </li>
                     <li class="list-group-item">
                         <span class="fw-bold">Tipo: </span>
-                        <span>{{ $comicArray->type }}</span>
+                        <span>{{ $comics->type }}</span>
                     </li>
                     <li class="list-group-item">
                         <span class="fw-bold">Descrizione: </span>
-                        <span>{{ $comicArray->description }}</span>
+                        <span>{{ $comics->description }}</span>
                     </li>
                 </ul>
             </div>

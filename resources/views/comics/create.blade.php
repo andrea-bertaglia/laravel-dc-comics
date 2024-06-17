@@ -9,7 +9,7 @@
         <div class="row d-flex justify-content-center">
             <h3 class="py-3 text-center">Aggiungi un nuovo fumetto</h3>
             <div class="col-6">
-                <form method="POST" action="{{ route('admin.store') }}">
+                <form method="POST" action="{{ route('comics.store') }}">
                     {{-- csrf token di sicurezza --}}
                     @csrf
 

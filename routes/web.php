@@ -19,6 +19,4 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('comics', ComicController::class);
-
-Route::resource('/admin', AdminComicController::class);
+Route::resource('comics', AdminComicController::class);

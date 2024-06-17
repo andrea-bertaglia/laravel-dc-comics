@@ -14,8 +14,8 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comicArray = Comic::all();
-        return view('admin.dashboard', compact('comicArray'));
+        $comics = Comic::all();
+        return view('comics.index', compact('comics'));
     }
 
     /**
@@ -23,7 +23,7 @@ class ComicController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        return view('comics.create');
     }
 
     /**
@@ -35,7 +35,7 @@ class ComicController extends Controller
         $newComic = new Comic();
         $newComic->fill($data);
         $newComic->save();
-        return redirect()->route('admin.index');
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -43,24 +43,27 @@ class ComicController extends Controller
      */
     public function show(string $id)
     {
-        $comicArray = Comic::findOrFail($id);
-        return view('admin.show', compact('comicArray'));
+        $comics = Comic::findOrFail($id);
+        return view('comics.show', compact('comics'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        // $comics = Comic::findOrFail($id);
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        $comic->update($data);
+        return redirect()->route('comics.index');
     }
 
     /**
