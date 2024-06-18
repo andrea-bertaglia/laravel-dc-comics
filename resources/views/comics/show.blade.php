@@ -4,19 +4,23 @@
     Dettaglio Comic
 @endsection
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('content')
     <div class="container">
         <div class="d-flex justify-content-end pt-4 pb-2 gap-3">
 
-            {{-- Bottone 'successivo' --}}
-            @if ($comics->id > 1)
+            {{-- Bottone 'precedente' --}}
+            @if (!empty($comics->id - 1))
                 <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id - 1]) }}"><i
                         class="fa-solid fa-circle-arrow-left"></i> Precedente</a>
             @endif
-            {{-- /Bottone 'successivo' --}}
+            {{-- /Bottone 'precedente' --}}
 
-            {{-- Bottone 'precedente' --}}
-            @if ($comics->id < $comics->count())
+            {{-- Bottone 'successivo' --}}
+            @if (!empty($comics->id + 1))
                 <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id + 1]) }}">Successivo <i
                         class="fa-solid fa-circle-arrow-right"></i></a>
             @endif
@@ -36,7 +40,7 @@
                     </li>
                     <li class="list-group-item">
                         <span class="fw-bold">Data di uscita: </span>
-                        <span>{{ $comics->sale_date }}</span>
+                        <span>{{ Carbon::parse($comics['sale_date'])->format('d/m/Y') }}</span>
                     </li>
                     <li class="list-group-item">
                         <span class="fw-bold">Tipo: </span>
@@ -45,6 +49,10 @@
                     <li class="list-group-item">
                         <span class="fw-bold">Descrizione: </span>
                         <span>{{ $comics->description }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="fw-bold">Prezzo: </span>
+                        <span>$ {{ $comics->price }}</span>
                     </li>
                 </ul>
             </div>

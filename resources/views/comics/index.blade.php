@@ -30,7 +30,7 @@
                         <td>{{ $comic['title'] }}</td>
                         <td>{{ $comic['price'] }}</td>
                         <td>{{ $comic['series'] }}</td>
-                        <td>{{ Carbon::parse($comic['sale_date'])->format('d-m-Y') }}</td>
+                        <td>{{ Carbon::parse($comic['sale_date'])->format('d/m/Y') }}</td>
                         <td>{{ $comic['type'] }}</td>
                         <td class="d-flex justify-content-between">
                             <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary me-2"

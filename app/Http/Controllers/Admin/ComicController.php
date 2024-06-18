@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
@@ -29,12 +30,13 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
         $data = $request->all();
-        $newComic = new Comic();
-        $newComic->fill($data);
-        $newComic->save();
+        // $newComic = new Comic();
+        // $newComic->fill($data);
+        // $newComic->save();
+        $comic = Comic::create($data);
         return redirect()->route('comics.index');
     }
 
