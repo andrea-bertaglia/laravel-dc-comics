@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Comic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 use Illuminate\Http\Request;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
@@ -61,7 +62,7 @@ class ComicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
         $data = $request->all();
         $comic->update($data);
@@ -74,6 +75,6 @@ class ComicController extends Controller
     public function destroy(Comic $comic)
     {
         $comic->delete();
-        return redirect()->route('comics.index');
+        return redirect()->route('comics.index')->with('message', 'Il fumetto <span class="fw-bold">' . $comic->title . '</span> è stato cancellato.');
     }
 }

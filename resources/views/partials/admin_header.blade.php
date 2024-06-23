@@ -11,7 +11,6 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('comics.index') }}">Lista Comics</a>
                     <a class="nav-link active" aria-current="page" href="{{ route('comics.create') }}">Aggiungi
                         nuovo</a>
-                    <a class="nav-link active text-secondary" aria-current="page" aria-disabled="true">Cancella</a>
                 </div>
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link active btn btn-secondary text-white" aria-current="page"

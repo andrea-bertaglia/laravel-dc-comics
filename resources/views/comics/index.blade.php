@@ -10,7 +10,16 @@
 
 @section('content')
     <div class="container">
+
+        {{-- mostro il messaggio di conferma cancellazione --}}
+        @if (session('message'))
+            <div class="alert alert-success my-4">
+                {!! session('message') !!}
+            </div>
+        @endif
+
         <h1 class="text-center py-4 fw-bold">My DcComics Dashboard</h1>
+
         <table class="table">
             <thead>
                 <tr>
@@ -42,45 +51,21 @@
                             <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+
+                                <!-- Button trigger modal -->
+                                <button role="button" class="btn btn-danger delete-btn" data-bs-toggle="modal"
+                                    data-bs-target="delete-modal" data-comic-title="{{ $comic['title'] }}">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+
                             </form>
-
-                            <!-- Button trigger modal -->
-                            {{-- <button role="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                                <i class="fas fa-trash"></i>
-                            </button> --}}
-                            {{-- modale di conferma cancellazione item --}}
-                            {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Conferma cancellazione</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Vuoi cancellare il fumetto?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Chiudi</button>
-                                            <form action="{{ route('comics.destroy', ['comic' => $comic->id]) }}"
-                                                method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Cancella</button>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    {{-- modale di conferma cancellazione item --}}
+    @include('partials.delete-modal')
 @endsection

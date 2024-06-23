@@ -16,8 +16,15 @@
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
-                        <input type="text" class="form-control" id="title" aria-describedby="title" name="title"
-                            value="{{ $comic->title }}">
+                        <input type="text" id="title" aria-describedby="title" name="title"
+                            value="{{ old('title'), $comic->title }}"
+                            class="form-control 
+                        @error('title') is-invalid @enderror">
+                        @error('title')
+                            <div id="title-error" class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="thumb" class="form-label">Immagine</label>
