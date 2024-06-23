@@ -13,18 +13,26 @@
         <div class="d-flex justify-content-end pt-4 pb-2 gap-3">
 
             {{-- Bottone 'precedente' --}}
-            @if (!empty($comics->id - 1))
-                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id - 1]) }}"><i
-                        class="fa-solid fa-circle-arrow-left"></i> Precedente</a>
+            @if ($previous)
+                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $previous->id]) }}">
+                    <i class="fa-solid fa-circle-arrow-left"></i> Precedente
+                </a>
+            @else
+                <span class="btn btn-outline-secondary disabled"><i class="fa-solid fa-circle-arrow-left"></i>
+                    Precedente</span>
             @endif
             {{-- /Bottone 'precedente' --}}
 
             {{-- Bottone 'successivo' --}}
-            @if (!empty($comics->id + 1))
-                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $comics->id + 1]) }}">Successivo <i
-                        class="fa-solid fa-circle-arrow-right"></i></a>
+            @if ($next)
+                <a class="btn btn-success" href="{{ route('comics.show', ['comic' => $next->id]) }}">
+                    Successivo <i class="fa-solid fa-circle-arrow-right"></i>
+                </a>
+            @else
+                <span class="btn btn-outline-secondary disabled">Successivo <i
+                        class="fa-solid fa-circle-arrow-right"></i></span>
             @endif
-            {{-- Bottone 'successivo' --}}
+            {{-- /Bottone 'successivo' --}}
 
         </div>
         <h1 class="text-center border-bottom border-tertiary py-2 mt-3">{{ $comics->title }}</h1>

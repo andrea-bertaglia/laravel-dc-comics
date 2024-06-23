@@ -47,7 +47,11 @@ class ComicController extends Controller
     public function show(string $id)
     {
         $comics = Comic::findOrFail($id);
-        return view('comics.show', compact('comics'));
+
+        $previous = Comic::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        $next = Comic::where('id', '>', $id)->orderBy('id')->first();
+
+        return view('comics.show', compact('comics', 'previous', 'next'));
     }
 
     /**
